@@ -5,8 +5,10 @@
 ## 功能
 
 - 从图片EXIF信息中提取拍摄时间作为水印文本
-- 可自定义字体大小、颜色和位置
+- 可自定义字体大小、颜色、位置和透明度
 - 自动创建输出目录保存添加水印后的图片
+- 支持多种图片格式 (JPEG, PNG, TIFF, BMP)
+- 完善的错误处理和边界情况检查
 
 ## 安装依赖
 
@@ -17,7 +19,7 @@ pip install -r requirements.txt
 ## 使用方法
 
 ```bash
-python photo_watermark.py [-h] [-s FONT_SIZE] [-c FONT_COLOR [FONT_COLOR ...]] [-p {top-left,top-right,bottom-left,bottom-right,center}] image_path
+python photo_watermark.py [-h] [-s FONT_SIZE] [-c FONT_COLOR [FONT_COLOR ...]] [-p {top-left,top-right,bottom-left,bottom-right,center}] [-o OPACITY] image_path
 ```
 
 ### 参数说明
@@ -26,6 +28,7 @@ python photo_watermark.py [-h] [-s FONT_SIZE] [-c FONT_COLOR [FONT_COLOR ...]] [
 - `-s FONT_SIZE`, `--font-size FONT_SIZE`: 字体大小 (默认: 20)
 - `-c FONT_COLOR [FONT_COLOR ...]`, `--font-color FONT_COLOR [FONT_COLOR ...]`: 字体颜色 RGB值 (默认: 255 255 255)
 - `-p {top-left,top-right,bottom-left,bottom-right,center}`, `--position {top-left,top-right,bottom-left,bottom-right,center}`: 水印位置 (默认: bottom-right)
+- `-o OPACITY`, `--opacity OPACITY`: 水印透明度 0-255 (默认: 128)
 
 ### 示例
 
@@ -38,6 +41,9 @@ python photo_watermark.py /path/to/image.jpg -s 30 -c 255 0 0
 
 # 自定义位置
 python photo_watermark.py /path/to/image.jpg -p top-left
+
+# 自定义透明度
+python photo_watermark.py /path/to/image.jpg -o 200
 ```
 
 ## 输出
